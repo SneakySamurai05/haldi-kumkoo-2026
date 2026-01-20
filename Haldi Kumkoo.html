@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>हळदी कुंकू निमंत्रण | Haldi Kumkum Invitation</title>
+    
+    <!-- Google Fonts for Marathi -->
+    <link href="https://fonts.googleapis.com/css2?family=Gotu&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-red: #d32f2f;
+            --primary-orange: #ff6f00;
+            --primary-yellow: #ffca28;
+            --text-dark: #3e2723;
+            --bg-cream: #fff8e1;
+            --gold: #daa520;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tiro Devanagari Marathi', serif;
+            background-color: var(--bg-cream);
+            background-image: radial-gradient(#ffecb3 1px, transparent 1px);
+            background-size: 20px 20px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: var(--text-dark);
+        }
+
+        /* --- Opening Screen Animation --- */
+        #opening-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-orange));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1), opacity 0.8s ease;
+        }
+
+        .opening-content {
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .envelope-btn {
+            background: var(--bg-cream);
+            color: var(--primary-red);
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            margin-top: 20px;
+            font-family: 'Gotu', sans-serif;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .envelope-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        /* --- Main Card --- */
+        .card-container {
+            position: relative;
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 2px solid var(--primary-yellow);
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            display: none; /* Hidden initially */
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        /* Scrollbar hiding for cleaner look */
+        .card-container::-webkit-scrollbar {
+            width: 5px;
+        }
+        .card-container::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 5px;
+        }
+
+        /* Decorative Borders */
+        .card-container::before {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 2px dashed var(--primary-orange);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        /* --- Animations Classes --- */
+        .show-card {
+            display: block;
+            animation: slideUpFade 1s forwards cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @keyframes slideUpFade {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .fade-in-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Content Styling --- */
+        .top-mantra {
+            color: var(--primary-red);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .main-title-box {
+            position: relative;
+            margin: 20px auto;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            color: var(--primary-red);
+            font-family: 'Gotu', sans-serif;
+            text-shadow: 2px 2px 0px var(--primary-yellow);
+            line-height: 1.2;
+        }
+        
+        .sub-title {
+            font-size: 1.8rem;
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .verse {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            color: #5d4037;
+            font-style: italic;
+        }
+
+        .highlight-text {
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        .details-section {
+            background-color: #fffde7;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid var(--primary-yellow);
+        }
+
+        .detail-row {
+            font-size: 1.1rem;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .host-section {
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+
+        .host-names {
+            font-size: 1.2rem;
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        /* --- Action Buttons --- */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: 'Gotu', sans-serif;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-call {
+            background-color: var(--primary-red);
+            color: white;
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.4);
+        }
+
+        .btn-loc {
+            background-color: var(--primary-orange);
+            color: white;
+            box-shadow: 0 4px 10px rgba(255, 111, 0, 0.4);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Smooth Opening Screen -->
+    <div id="opening-screen">
+        <div class="opening-content">
+            <div style="color:white; font-size: 2rem; margin-bottom: 20px; font-weight: bold;">|| श्री गणेशाय नमः ||</div>
+            <i class="fas fa-om" style="color:var(--primary-yellow); font-size: 3rem; margin-bottom: 20px;"></i>
+        </div>
+        <button class="envelope-btn" onclick="openInvitation()">
+            <i class="fas fa-envelope-open-text"></i> निमंत्रण उघडा
+        </button>
+    </div>
+
+    <!-- Invitation Card -->
+    <div class="card-container" id="main-card">
+        
+        <!-- Header -->
+        <div class="top-mantra fade-in-item" style="animation-delay: 0.2s;">
+            !! ॐ गणेशाय नमः !!
+        </div>
+
+        <!-- Graphic / Title -->
+        <div class="main-title-box fade-in-item" style="animation-delay: 0.4s;">
+            <i class="fas fa-leaf" style="color:#4caf50; font-size: 2rem;"></i><br>
+            <span class="main-title">हळदी कुंकू</span><br>
+            <span class="sub-title">निमंत्रण</span>
+        </div>
+
+        <!-- Poem -->
+        <div class="verse fade-in-item" style="animation-delay: 0.6s;">
+            साजरे करु मकर संक्रमण, करुन संकटावर मात<br>
+            हास्याचे हलवे फुटुन, तिळगुळांची करु खैरात...<br>
+            <span class="highlight-text">तिळगुळा घ्या गोड गोड बोला...!</span>
+        </div>
+
+        <!-- Event Details -->
+        <div class="details-section fade-in-item" style="animation-delay: 0.8s;">
+            <div class="detail-row">
+                <i class="far fa-calendar-alt" style="color:var(--primary-red)"></i> 
+                <strong>दिनांक:</strong> २०.०१.२०२६ (मंगळवार)
+            </div>
+            <div class="detail-row">
+                <i class="far fa-clock" style="color:var(--primary-red)"></i> 
+                <strong>वेळ:</strong> सायंकाळी ६ वाजता
+            </div>
+            <p style="margin-top:10px; color: #555;">आमचे येथे हळदी कुंकू आयोजिले आहे.</p>
+        </div>
+
+        <!-- Closing & Host -->
+        <div class="host-section fade-in-item" style="animation-delay: 1s;">
+            <p>अगत्याचे येणे करावे हे आग्रहाचे निमंत्रण...</p>
+            <div style="margin-top: 15px; font-size: 0.9rem;">:: आपले नम्र ::</div>
+            <div class="host-names">समस्त नसलापुरे परिवार आणि आप्तेष्ट</div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="action-buttons fade-in-item" style="animation-delay: 1.2s;">
+            <a href="tel:+918459954461" class="btn btn-call">
+                <i class="fas fa-phone-alt"></i> Call
+            </a>
+            <a href="https://maps.app.goo.gl/ac1tjRiyeqeuZbqv5" target="_blank" class="btn btn-loc">
+                <i class="fas fa-map-marker-alt"></i> Location
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        function openInvitation() {
+            const openingScreen = document.getElementById('opening-screen');
+            const mainCard = document.getElementById('main-card');
+
+            // Slide up the opening screen
+            openingScreen.style.transform = "translateY(-100%)";
+            openingScreen.style.opacity = "0";
+
+            // Wait slightly for the curtain to lift, then show card
+            setTimeout(() => {
+                openingScreen.style.display = 'none';
+                mainCard.classList.add('show-card');
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>
